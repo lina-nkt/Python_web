@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4 mb-4">
+    <h2 class="text-center">Регистрация</h2><br>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="d-flex justify-content-center input-group">
+            <span class="input-group-text">Логин</span>
+            {{ form.login(type="string", class="form-control") }}
+        </div>
+        {% for error in form.login.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}<br>
+        <div class="d-flex justify-content-center input-group">
+            <span class="input-group-text">Пароль</span>
+            {{ form.password(type="password", class="form-control") }}
+        </div>
+        {% for error in form.password.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}<br>
+        <div class="d-flex justify-content-center input-group">
+            <span class="input-group-text">Повторите пароль</span>
+            {{ form.repeat(type="password", class="form-control") }}
+        </div>
+        {% for error in form.repeat.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}<br>
+        {% if message %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}<br>
+        <div class="d-flex justify-content-center">
+            {{ form.submit(type="submit", class="btn btn-dark text-center") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
